@@ -1,0 +1,121 @@
+📚 <iostream> Header File
+text
+**Purpose**: Standard Input/Output operations for console programs
+
+**Key Objects & Functions**:
+├── cin     → Keyboard input (>> operator)
+├── cout    → Screen output (<< operator)  
+├── cerr    → Error output (unbuffered)
+├── clog    → Log output (buffered)
+├── endl    → Newline + flush buffer
+├── flush() → Force output buffer clear
+└── ws      → Extract whitespace
+
+**Example Code**:
+#include<iostream>
+using namespace std;
+int main() {
+    int num; string name;
+    cout << "Enter name and number: ";
+    cin >> name >> num;
+    cout << "Hello " << name << ", your number is " << num << endl;
+    return 0;
+}
+
+
+📝 <string.h> Header File (C-Style Strings)
+text
+**Purpose**: Functions for null-terminated character arrays
+
+**Essential Functions**:
+│
+├── strlen(str)     → Length (excluding '\0')
+├── strcpy(dest,src)→ Copy src to dest
+├── strncpy(dest,src,n) → Copy first n chars
+├── strcat(dest,src)→ Append src to dest
+├── strncat(dest,src,n) → Append first n chars
+├── strcmp(s1,s2)   → Compare (0=equal, <0=s1<s2, >0=s1>s2)
+├── strchr(str,ch)  → First occurrence of ch
+├── strstr(s1,s2)   → First occurrence of s2 in s1
+└── memcpy(dest,src,n) → Copy n bytes
+text
+**Example**:
+char str1[50] = "Hello";
+char str2[50];
+strcpy(str2, str1);           // str2 = "Hello"
+strcat(str2, " World");       // str2 = "Hello World"
+int len = strlen(str2);       // len = 11
+if(strcmp(str1, "Hello") == 0) // Strings equal
+⚠️ Note: Use <cstring> in modern C++
+
+🛠️ <stdlib.h> Header File (Utilities)
+text
+**Purpose**: General utility functions
+
+**1. Memory Management**:
+│
+├── malloc(size)    → Allocate size bytes (void*)
+├── calloc(n,size)  → Allocate & zero n elements
+├── realloc(ptr,n)  → Resize allocated memory
+└── free(ptr)       → Deallocate memory
+│
+**2. Number Conversion**:
+│
+├── atoi(str)       → String → int
+├── atol(str)       → String → long
+├── atof(str)       → String → double
+└── itoa(num,str,base) → int → String
+│
+**3. Random Numbers**:
+│
+├── rand()          → Random int (0 to RAND_MAX)
+└── srand(seed)     → Initialize random generator
+│
+**4. Miscellaneous**:
+│
+├── abs(x)          → Absolute value
+├── exit(code)      → Terminate program
+└── system(cmd)     → Execute system command
+text
+**Example**:
+#include<stdlib.h>
+int main() {
+    // Dynamic array
+    int n = 5;
+    int* arr = (int*)malloc(n * sizeof(int));
+    for(int i=0; i<n; i++) arr[i] = i*10;
+    
+    // Random number
+    srand(time(NULL));
+    int random = rand() % 100;  // 0-99
+    
+    free(arr);
+    return 0;
+}
+🔄 Modern C++ Header Mapping
+text
+┌─────────────────┬──────────────────┬─────────────────┐
+│ Old C Header    │ Modern C++       │ Why Better?     │
+├─────────────────┼──────────────────┼─────────────────┤
+│ <string.h>      │ <cstring>        │ std:: namespace │
+│ <stdlib.h>      │ <cstdlib>        │ Type safety     │
+│ <stdio.h>       │ <cstdio>         │ C++ compatible  │
+│ <math.h>        │ <cmath>          │ Overloaded fns  │
+└─────────────────┴──────────────────┴─────────────────┘
+📋 Quick Reference Table
+text
+┌──────────────┬──────────────┬──────────────────────────────┐
+│ Header       │ Category     │ Must-Know Functions          │
+├──────────────┼──────────────┼──────────────────────────────┤
+│ iostream     │ I/O          │ cin, cout, endl, flush       │
+│ string.h     │ Strings      │ strlen, strcpy, strcmp       │
+│ stdlib.h     │ Utilities    │ malloc, rand, atoi, exit     │
+└──────────────┴──────────────┴──────────────────────────────┘
+✅ Best Practices
+text
+1. Always use: using namespace std;
+2. Prefer modern headers: <cstring>, <cstdlib>
+3. For strings use: #include <string> (std::string)
+4. Always free() allocated memory
+5. Use srand(time(NULL)) for better random numbers
+6. Check malloc() return value for NULL
