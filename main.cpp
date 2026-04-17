@@ -28,6 +28,7 @@ int main(){
 
                 switch(input){
                         case 1:
+                                start:
                                 cout<<"Enter book id"<<endl;
                                 cin>>lib[count].bookid;
 
@@ -58,6 +59,16 @@ int main(){
                                         cout<<"No of pages of book = "<<lib[count].pages<<endl;
                                 }
                                 break;
+                        
+                        case 3:
+                                cout<<"quiting .."<<endl;
+                                exit(0);
+                                break;
+
+                        default:
+                                cout<<"Please try again by choosing correct option"<<endl;
+                                goto start;
+
 
 
                         
