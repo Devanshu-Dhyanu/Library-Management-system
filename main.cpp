@@ -48,6 +48,7 @@ int main(){
                                 count++;
                                 break;
                         
+                                case 2:
                         
 
                 }
