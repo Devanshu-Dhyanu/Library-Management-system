@@ -48,7 +48,18 @@ int main(){
                                 count++;
                                 break;
                         
-                                case 2:
+                        case 2:
+                                for(int i = 0; i < count; i++){
+                                        cout<<"Book id = "<<lib[count].bookid<<endl;
+                                        cout<<"Book name = "<<lib[count].bookname<<endl;
+                                        cout<<"Book author = "<<lib[count].author<<endl;
+                                        cout<<"Student name = "<<lib[count].studentname<<endl;
+                                        cout<<"Book price = "<<lib[count].price<<endl;
+                                        cout<<"No of pages of book = "<<lib[count].pages<<endl;
+                                }
+                                break;
+
+
                         
 
                 }
